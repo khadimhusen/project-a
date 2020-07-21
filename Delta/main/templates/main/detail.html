@@ -1,0 +1,112 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Detail{% endblock %}
+
+{% block content%}
+
+
+<!--<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">{{feed.title}}</h1>
+        <div class="lead">{{feed.description}}</div>
+    </div>
+</div>-->
+
+<div class="container mt-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'find-job' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{feed.title}}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-8">
+            <article class=" feed-section  rounded-sm p-2 m-4">
+                <article class=" content-header">
+                    <img class="rounded-circle feed-img" src="{%static 'base/img/user.svg'%}" style="height: 65px;
+    width: 65px;
+    margin-right: 16px;">
+                    <span class="float-right p-2 m-2 text-success lead">Rs.5000</span>
+                    <div class="media-body">
+                        <div class="feed-metadata">
+                            <a class=" add-item" href="#">{{user.username}}</a>
+                            <small class="text-muted">07-07-2020</small>
+                            <span>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+
+                    </span>
+                        </div>
+
+                        <h2 style="display:inline;"><a class="feed-title" href="#">{{feed.title}}</a></h2>
+                        <button type="button" class="btn btn-success float-right mt-1 ">Apply</button>
+
+                        <p class="article-content text-justify">
+                            {{feed.description }}
+
+                            <br>
+                            <a class="card-link" href="#">{{feed.category}}</a>
+                            <br>
+                            {% for tag in feed.tags.all %}
+                            <span> <a class="card-link tag" style="color:#fff; text-decoration:none;"
+                                      href="{% url 'tags' tag.slug %}">{{tag}}</a></span>
+                            {% endfor %}
+
+                        </p>
+                    </div>
+
+                </article>
+                <hr class="border-success">
+                <div class="media-footer">
+                    <span class="mx-auto">Cherish</span>
+                    <span class="float-right">Share</span>
+                    <hr class="border-success"/>
+                    <!--                    <span>-->
+                    <!--                              <img src="img/user.svg" class="avatar"/>-->
+                    <!--                              <input type="text" placeholder="Add Comment..."/>-->
+                    <!--                              <button type="submit">Post Comment</button>-->
+                    <!--                            </span>-->
+
+                    <b>Comments</b>
+                    <form action="/feed/feedComment" method="post">
+                        {%csrf_token%}
+                        <input type="text" name="comment" placeholder="enter comment here">
+                        <input type="hidden" name="feedId" value="{{feed.sno}}" >
+                        <input type="submit" value="Submit">
+                    </form>
+                    <div class="row ">
+                        <div class="col-md-2">image here</div>
+                        <div class="col-md-10"><b>name</b> comments here</div>
+                    </div>
+                </div>
+
+            </article>
+        </div>
+        <div class="col-md-4">
+            <section class="clientDetail-section">
+                <header class="text-center ">
+                    <h5>Client History</h5>
+                </header>
+                <hr style="border-width:5px; background-color:#28a745;">
+                <span class="lead">
+                    <i class="fa fa-user ml-1"> Swastik Shrestha</i>
+                    <i class="fa fa-map-marker ml-1"> Lalitpur, Nepal</i>
+                    <br>
+                    <i class="fa fa-briefcase ml-1"> Projects</i>
+                </span>
+                <article class="border  bg-secondary">
+
+                </article>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+<a href="/">Back</a>
+
+{% endblock %}
