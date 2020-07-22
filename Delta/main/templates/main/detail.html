@@ -72,7 +72,7 @@
                     <!--                            </span>-->
 
                     <b>Comments</b>
-                    <form action="/feed/feedComment" method="post">
+                    <form action="/feedComment/" method="post">
                         {%csrf_token%}
                         <input type="text" name="comment" placeholder="enter comment here">
                         <input type="hidden" name="feedId" value="{{feed.sno}}" >
