@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns = [
     # API to post comment
-    path('feedComment/', views.feedComment, name="feedComment"),
+    path('/feedComment/', views.feedComment, name="feedComment"),
 
     path('', views.index, name="Home"),
     path('find-jobs/', views.findjobs, name="find-job"),
